@@ -1,62 +1,10 @@
 import string
 import random
+from replit import clear
 from python_words import words
+from hangmang_resources import hangmanpics
 
-
-#words=['cafune', 'saudade', 'feliz']
 alphabet = list(string.ascii_lowercase)
-
-hangmanpics = ['''
-  +---+
-  |   |
-      |
-      |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
-      |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
-  |   |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
- /|   |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
- /    |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
- / \  |
-      |
-=========''']
-
 print(f'Total lives: {len(hangmanpics)}')
 lives=len(hangmanpics)
 
@@ -76,17 +24,21 @@ while continue_game:
     # step 3: Choosing a letter randomly
     print(hangmanpics[-lives])
     letter=input('enter a letter: ')
+    clear()
 
     # step 4: Checking if the letter is in the word
     ## Yes
     for i in range(len(word)):
         if letter==word[i]:
             blank[i]=letter
+            print('Nice job.')
 
     ## No
     if letter not in word:
-        print('No match :( ')
+        print('No match :( You lose a life.')
         lives-=1
+
+
     print(f'You still have {lives} lives to complete {blank}')
 
     # Ending the game
