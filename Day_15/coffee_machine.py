@@ -13,7 +13,6 @@ def coffee_machine():
 
     while should_continue==True:
         coffee_option= input('What would you like? (espresso/latte/cappuccino): ' )
-        enough_ing = True
         # TODO: Validating ingredients
         def validate_resources(drink):
             counter = 0
@@ -26,11 +25,9 @@ def coffee_machine():
             if counter == 0:
                 for ing in MENU[drink]['ingredients']:
                     report[ing] -= MENU[drink]['ingredients'][ing]
-                print(f'Enough ingredients ☕')
+                print(f'Enough ingredients 😁')
 
         validate_resources(coffee_option)
-
-
 
         # TODO: Process Money
         print('Please insert coins')
@@ -46,9 +43,9 @@ def coffee_machine():
             if total >= MENU[coffee_option]['cost']:
                 change = total - MENU[coffee_option]['cost']
                 report['money'] += MENU[coffee_option]['cost']
-                print(f'Here is your ☕ {coffee_option} with yours ${round(change, 2)} 💵 \nThe new report is:{report}')
+                print(f'Here is your ☕ {coffee_option} with yours ${round(change, 2)} in change 💵 \nThe new report is:{report}')
             else:
-                print(f'❌ Sorry, there is not enough money for the {coffee_option}')
+                print(f'❌ Sorry, there is not enough money for the {coffee_option}. \nMoney refunded 💵.')
 
         validate_money(q, d,n, p)
         other_drink=input('Do you want another drink? Yes or No ')
