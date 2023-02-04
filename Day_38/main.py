@@ -3,10 +3,10 @@ from datetime import datetime
 import os
 
 
-NUTRITION_API= os.environ["NUTRITION_API"]
-SHEET_API = os.environ["SHEET_API"]
-API_KEY = os.environ["API_KEY"]
-APP_ID = os.environ["APP_ID"]
+NUTRITION_API= os.environ.get("NUTRITION_API")
+SHEET_API = os.environ.get("SHEET_API")
+API_KEY = os.environ.get("API_KEY")
+APP_ID = os.environ.get("APP_ID")
 AGE = 32
 GENDER = 'FEMALE'
 WEIGHT_KG = 52
