@@ -1,16 +1,21 @@
 import requests
 from datetime import  datetime
+import os
+
 
 day=datetime.now()
 
-nutrition_api='https://trackapi.nutritionix.com/v2/natural/exercise'
-API_KEY='c2551f419b48340650abeee76c92dd1d'
+nutrition_api=''
+API_KEY=''
+sheet_api = ''
+
 APP_ID='1d3e68c9'
 AGE=32
 GENDER='FEMALE'
 WEIGHT_KG=52
 HEIGHT_CM=165
-
+today = datetime.now().strftime('%d/%m/%Y')
+now_time=datetime.now().strftime('%X')
 
 exercise_input = input("Tell which exercise you did today?: ")
 
@@ -30,10 +35,27 @@ parameters = {
 
 response = requests.post(url=nutrition_api, json=parameters, headers=header)
 
+
+
 results = {
-    'day':day.strftime('%Y%m%d'),
+    'day': day.strftime('%Y%m%d'),
     'input': response.json()['exercises'][0]['user_input'],
     'duration_min': response.json()['exercises'][0]['duration_min'],
     'calories': response.json()['exercises'][0]['nf_calories'],
  }
 print(results)
+
+
+sheet_inputs = {
+    "workout": {
+        "date": today,
+        "time": now_time,
+        "exercise": results["input"],
+        "duration": results["duration_min"],
+        "calories": results["calories"]
+    }
+}
+
+sheet_response = requests.post(sheet_api, json=sheet_inputs)
+
+print(sheet_response.text)
