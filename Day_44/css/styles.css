@@ -50,11 +50,11 @@ a:hover {
 .top-container {
   background-color: #E4F9F5;
   position: relative;
-  padding-top: 100px;
+  padding-top: 80px;
 }
 
 .middle-container {
-  margin: 120px 0;
+  margin: 100px 0;
 }
 
 .bottom-container {
@@ -63,8 +63,8 @@ a:hover {
 }
 
 .skill-row {
-  width: 50%;
-  margin: 100px auto 100px auto;
+  width: 40%;
+  margin: 50px auto 50px auto;
   text-align: left;
 }
 
@@ -81,7 +81,7 @@ a:hover {
 
 .copyright {
   color: #EAF6F6;
-  font-size: 0.75rem;
+  font-size: 1rem;
   padding: 25px 0;
 }
 
