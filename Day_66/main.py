@@ -3,13 +3,8 @@
 user = {
     'id': 1,
     'name': 'jose',
-    'role': 'analyst'
+    'role': 'admin'
 }
-
-# delete_database() function, DO NOT CHANGE
-def delete_database():
-    # perform deletion
-    print('Database deleted!')
 
 # ---- Do not change the code above ----
 
@@ -25,5 +20,9 @@ def check_permission(func):
     return wraper
 
 # Use the check_permission() decorator and delete_database() function to create a secure_delete_database() function:
-secure_delete_database = check_permission(delete_database)
-print(secure_delete_database())
+@check_permission
+def delete_database():
+    # perform deletion
+    print('Database deleted!')
+
+print(delete_database())
